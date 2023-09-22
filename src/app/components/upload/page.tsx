@@ -176,15 +176,6 @@ function Upload() {
         setAudioInstances(newAudioInstances);
     };
 
-    // const filterFiles = (query) => {
-    //     const filtered = uploadedFiles.filter((file) => {
-    //         const dateMatches = selectedDate.toDateString() === file.date.toDateString();
-    //         const commentMatches = file.comment.toLowerCase().includes(query.toLowerCase());
-    //         return dateMatches && commentMatches;
-    //     });
-    //     setFilteredFiles(filtered);
-    // };
-
     return (
         <div className="flex flex-col pl-2 pr-2 pt-3 md:pl-8 md:pr-8"> 
             <div className="flex flex-row justify-between">
