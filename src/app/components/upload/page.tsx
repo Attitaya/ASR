@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
-import SearchBar from "./search";
+import SearchBar from "../search";
 import { CgCheck, CgClose, CgChevronDoubleLeft, CgChevronDoubleRight, CgChevronRight, CgChevronLeft } from "react-icons/cg";
 import Calendar from "react-calendar";
 import "./upload.css";
@@ -28,6 +28,7 @@ function Upload() {
     const [page, setPage] = useState(1);
     const filesPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchResults, setSearchResults] = useState([]);
 
     const totalPages = Math.ceil(uploadedFiles.length / filesPerPage);
     const reversedUploadedFiles = uploadedFiles.slice().reverse(); // Reverse the uploaded files array
@@ -136,10 +137,23 @@ function Upload() {
         }
     };
 
-    const handleSearch = (query) => {
-    // Implement your search logic here using the query
-        console.log("Searching for:", query);
+    const handleSearch = (searchText) => {
+        // ทำการค้นหาจากข้อมูลที่คุณมี (ในกรณีนี้ไม่มี API)
+        // ตัวอย่างเท่านี้เพียงเฉพาะการแสดงผลแบบซัมเมอร์เท่านั้น
+        // คุณสามารถเชื่อมต่อ API จริงเพื่อดึงข้อมูลตามที่ต้องการ
+        const fakeData = [
+            { id: 1, title: 'CgSearch 1' },
+            { id: 2, title: 'CgSearch 2' },
+            { id: 3, title: 'CgSearch 3' },
+        ];
+    
+        const results = fakeData.filter((item) =>
+            item.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+    
+        setSearchResults(results);
     };
+    
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -185,7 +199,14 @@ function Upload() {
                 >
                 Upload
                 </button>
-                <SearchBar onSearch={handleSearch} />
+                <div>
+                    <SearchBar onSearch={handleSearch} />
+                    <ul>
+                        {searchResults.map((result) => (
+                        <li key={result.id}>{result.title}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
                 {reversedUploadedFiles.sort((a, b) => b.date - a.date).slice((currentPage - 1) * filesPerPage, currentPage * filesPerPage).map((file, index) => {
                     const reversedIndex = reversedUploadedFiles.length - 1 - index;
