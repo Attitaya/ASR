@@ -193,12 +193,14 @@ function Upload() {
     return (
         <div className="flex flex-col pl-2 pr-2 pt-3 md:pl-8 md:pr-8"> 
             <div className="flex flex-row justify-between">
-                <button
-                onClick={() => setIsOpen(true)}
-                className="font-bold bg-red text-black px-9 rounded-md"
-                >
-                Upload
-                </button>
+                <div>
+                    <button
+                    onClick={() => setIsOpen(true)}
+                    className="font-bold bg-red text-black px-9 rounded-md py-2"
+                    >
+                    Upload
+                    </button>
+                </div>
                 <div>
                     <SearchBar onSearch={handleSearch} />
                     <ul>
@@ -219,12 +221,12 @@ function Upload() {
                             </div>
                             <div className="md:flex justify-center items-center md:w-1/2">
                                 <audio controls src={URL.createObjectURL(file.file)} />
-                                <div className="md:ml-5 md:mt-0 mt-4"> {/* เพิ่มระยะห่างและความชิดซ้ายเมื่อในจอใหญ่ */}
+                                <div className="md:ml-5 md:mt-0 mt-4 "> {/* เพิ่มระยะห่างและความชิดซ้ายเมื่อในจอใหญ่ */}
                                     <Link href="/summary" passHref={true} legacyBehavior>
-                                        <a className="bg-blue text-white px-3 py-1 rounded">Summarize</a>
+                                        <a className="bg-blue text-white px-3 py-1 rounded mr-1">Summarize</a>
                                     </Link>
                                     <button
-                                        className="bg-red text-white px-3 py-1 rounded"
+                                        className="bg-red text-white px-3 py-1 rounded md:mt-1"
                                         onClick={() => handleDelete(index)} // Call the delete function on click
                                     >
                                         Delete <MdDelete className="inline-block ml-1" />

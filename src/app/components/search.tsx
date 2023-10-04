@@ -28,7 +28,7 @@ const SearchBar = ({onSearch}) => {
                 />
                 <button
                         onClick={handleSearch}
-                        className="absolute inset-y-0 right-0 px-3 flex items-center justify-center bg-gray-200 rounded-r"
+                        className="relative inset-y-1 right-6 justify-items-center bg-gray-200 rounded-r z-20"
                     >
                         <CgSearch />
                 </button>
